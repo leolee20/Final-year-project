@@ -3,6 +3,7 @@ import pandas as pd
 data = pd.read_excel('/Users/leeli/Desktop/model/RF/RF_est.xlsx')
 data2 = pd.read_excel('/Users/leeli/Desktop/model/mixed_effect/prediction90_est.xlsx')
 
+# Evaluate the estimation for RF model
 def function1(a,b):
     if abs(a-b) / ((a+b)/2) > 0.2937:
         if a > b:
@@ -12,6 +13,7 @@ def function1(a,b):
     else:
         return "Normal"
 
+# Evaluate the estimation for Mixed-effect model
 def function2(a,b,c):
     if a <= b:
         return "Underestimation"
@@ -20,6 +22,7 @@ def function2(a,b,c):
     else:
         return "Normal"
 
+# calculate the symmetric Absolute Percentage Error for each predicted salary
 def function3(a,b):
     error = abs(a-b) / ((a+b)/2)
     return error
