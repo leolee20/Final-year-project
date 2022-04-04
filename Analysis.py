@@ -1,7 +1,7 @@
 import pandas as pd
 
-data = pd.read_excel('/Users/leeli/Desktop/model/RF/RF_est.xlsx')
-data2 = pd.read_excel('/Users/leeli/Desktop/model/mixed_effect/prediction90_est.xlsx')
+data = pd.read_excel('/Users/leeli/Desktop/model/RF/RF_pred.xlsx')
+data2 = pd.read_excel('/Users/leeli/Desktop/model/mixed_effect/mixed_effect_pred.xlsx')
 
 # Evaluate the estimation for RF model
 def function1(a,b):
@@ -32,5 +32,5 @@ data['Result'] = data.apply(lambda x: function1(x['WEEKLY_GROSS'], x['Pred']), a
 data['Error_per'] = data.apply(lambda x: function3(x['WEEKLY_GROSS'], x['Pred']), axis=1)
 data2['Result'] = data2.apply(lambda x: function2(x['Salary'], x['down'], x['up']),axis=1)
 
-data.to_excel('/Users/leeli/Desktop/model/RF/RF_est.xlsx',index=False)
-data2.to_excel('/Users/leeli/Desktop/model/mixed_effect/prediction90_est.xlsx',index=False)
+data.to_excel('/Users/leeli/Desktop/model/RF/RF_pred.xlsx',index=False)
+data2.to_excel('/Users/leeli/Desktop/model/mixed_effect/mixed_effect_pred.xlsx',index=False)
