@@ -6,8 +6,8 @@ import numpy as np
 import joblib
 
 # Input the dataset
-dataX = pd.read_excel("/Users/leeli/Desktop/model/RF/X_train.xlsx").values
-dataY = pd.read_excel("/Users/leeli/Desktop/model/RF/Y_train.xlsx").values
+dataX = pd.read_excel(".../X_train.xlsx").values # Selected features
+dataY = pd.read_excel(".../Y_train.xlsx").values # Weekly Salary
 dataY = np.ravel(dataY)
 
 # Build the model
@@ -42,4 +42,4 @@ plt.show()
 # predict the response variable for dataset
 pred = rf.predict(dataX)
 pred = pd.DataFrame(pred)
-# pred.to_excel('/Users/leeli/Desktop/model/RF/Pred.xlsx',index=False)
+# pred.to_excel('.../Pred.xlsx',index=False)

@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import GridSearchCV
 
-dataX = pd.read_excel("/Users/leeli/Desktop/model/RF/X_train.xlsx").values
-dataY = pd.read_excel("/Users/leeli/Desktop/model/RF/Y_train.xlsx").values
+dataX = pd.read_excel(".../X_train.xlsx").values # Selected features
+dataY = pd.read_excel(".../Y_train.xlsx").values # Weekly Salary
 dataY = np.ravel(dataY)
 
 rf_model = RandomForestRegressor(n_estimators=200,random_state=2)

@@ -4,7 +4,7 @@ library("xlsx")
 library(performance)
 library(merTools)
 library(dplyr)
-dataset <- read_excel("/Users/leeli/Desktop/result/Total.xlsx")
+dataset <- read_excel(".../Total.xlsx")
 dataset[is.na(dataset)] <- 0
 
 # Build the model
@@ -16,18 +16,20 @@ model <- lmer(WEEKLY_GROSS ~ Current_Age + POS + Starts
               data=dataset, REML=TRUE)
 
 # save the performance of model
-sink("/Users/leeli/Desktop/model/mixed_effect/Summary4.txt")
+sink(".../Summary.txt")
 print(summary(model),correlation=TRUE)
 model_performance(model)
 sink()
 # save the model
-save(model, file="/Users/leeli/Desktop/model.rda")
+save(model, file=".../model.rda")
 
 # predict the results and calculate the 90% prediction interval
-test = read_excel("/Users/leeli/Desktop/result/test.xlsx")
+test = read_excel(".../test.xlsx")
 pred = predictInterval(merMod = model, newdata = test,
                        level = 0.90, type="linear.prediction",
                        include.resid.var = 0, seed = 10)
 pred = predict(model, test)
-write.xlsx(pred,"/Users/leeli/Desktop/model/mixed_effect/prediction95.xlsx")
+
+# Store the predicted results
+write.xlsx(pred,".../prediction.xlsx")
 
