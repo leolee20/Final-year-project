@@ -10,7 +10,7 @@ x = data['Pred']
 y = data['WEEKLY_GROSS']
 plt.xlabel('Pred_Salary')
 plt.ylabel('True_Salary')
-plt.scatter(x,y)
+plt.scatter(x,y,s=5)
 z = np.polyfit(x, y, 1)
 p = np.poly1d(z)
 plt.plot(x,p(x),"r--")
